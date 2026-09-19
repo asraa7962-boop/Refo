@@ -1,0 +1,1157 @@
+/* =====================================================
+   RIFAL — VISUAL STORY VERSION
+===================================================== */
+
+:root {
+
+    --cream: #f7f0e5;
+    --soft-cream: #fffaf3;
+
+    --beige: #dfcdb7;
+
+    --burgundy: #641f2b;
+    --dark-burgundy: #48151e;
+
+    --gold: #b89458;
+    --soft-gold: #d7bd8a;
+
+    --text: #4d3930;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    width: 100%;
+    height: 100vh;
+
+    overflow: hidden;
+
+    background: var(--cream);
+
+    color: var(--text);
+
+    font-family: "Amiri", serif;
+}
+
+
+/* =====================================================
+   INTRO
+===================================================== */
+
+.intro {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 100;
+
+    background: var(--burgundy);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: var(--soft-cream);
+
+    animation: introExit 1.5s ease 2.8s forwards;
+}
+
+
+.intro-content {
+
+    text-align: center;
+
+    animation: introAppear 1.5s ease forwards;
+}
+
+
+.intro-symbol {
+
+    color: var(--gold);
+
+    font-size: 18px;
+
+    margin-bottom: 25px;
+
+    animation: symbolPulse 2s ease-in-out infinite;
+}
+
+
+.intro-content p {
+
+    font-size: 20px;
+
+    margin-bottom: 5px;
+
+}
+
+
+.intro-content span {
+
+    font-size: 14px;
+
+    opacity: 0.6;
+
+}
+
+
+.intro-content h1 {
+
+    font-size: 80px;
+
+    font-weight: 400;
+
+    margin-top: 8px;
+
+    color: var(--soft-cream);
+}
+
+
+@keyframes introAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(20px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+@keyframes introExit {
+
+    to {
+
+        opacity: 0;
+
+        visibility: hidden;
+
+        pointer-events: none;
+
+    }
+
+}
+
+
+@keyframes symbolPulse {
+
+    0%,
+    100% {
+
+        transform: scale(1);
+
+        opacity: .5;
+
+    }
+
+    50% {
+
+        transform: scale(1.3);
+
+        opacity: 1;
+
+    }
+
+}
+
+
+/* =====================================================
+   WEBSITE
+===================================================== */
+
+.website {
+
+    width: 100%;
+
+    height: 100vh;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+/* =====================================================
+   SCENES
+===================================================== */
+
+.scene {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px 25px;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform:
+        translateY(35px)
+        scale(.98);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease,
+        visibility 1s ease;
+
+    overflow: hidden;
+}
+
+
+.scene.active {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+/* =====================================================
+   OPENING
+===================================================== */
+
+.opening {
+
+    background:
+        radial-gradient(
+            circle at center,
+            var(--soft-cream),
+            var(--cream)
+        );
+}
+
+
+.opening-content {
+
+    position: relative;
+
+    z-index: 20;
+
+    width: 100%;
+
+    max-width: 650px;
+
+    text-align: center;
+}
+
+
+.small-title {
+
+    font-size: 14px;
+
+    color: var(--burgundy);
+
+    opacity: .75;
+
+    margin-bottom: 25px;
+}
+
+
+.name-wrapper {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 20px;
+}
+
+
+.baby-name {
+
+    font-size:
+        clamp(80px, 17vw, 155px);
+
+    font-weight: 400;
+
+    color: var(--burgundy);
+
+    line-height: 1;
+
+    animation:
+        nameFloat 5s ease-in-out infinite;
+}
+
+
+@keyframes nameFloat {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-6px);
+
+    }
+
+}
+
+
+.name-decoration {
+
+    width: 45px;
+
+    height: 1px;
+
+    background: var(--gold);
+
+    position: relative;
+}
+
+
+.name-decoration::after {
+
+    content: "✦";
+
+    position: absolute;
+
+    color: var(--gold);
+
+    font-size: 11px;
+
+    top: -9px;
+}
+
+
+.name-decoration.left::after {
+
+    right: -2px;
+
+}
+
+
+.name-decoration.right::after {
+
+    left: -2px;
+
+}
+
+
+.subtitle {
+
+    margin-top: 22px;
+
+    font-size: 18px;
+
+    line-height: 2;
+
+    opacity: .65;
+}
+
+
+/* =====================================================
+   DATE
+===================================================== */
+
+.date-card {
+
+    width: 115px;
+
+    height: 130px;
+
+    margin:
+        35px auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        rgba(255,255,255,.35);
+
+    border:
+        1px solid
+        rgba(184,148,88,.5);
+
+    transform:
+        rotate(-2deg);
+
+    transition:
+        transform .5s ease;
+}
+
+
+.date-card:hover {
+
+    transform:
+        rotate(0)
+        scale(1.04);
+}
+
+
+.date-number {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 48px;
+
+    color: var(--burgundy);
+
+    line-height: 1;
+}
+
+
+.date-month {
+
+    font-size: 17px;
+}
+
+
+.date-year {
+
+    color: var(--gold);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 15px;
+}
+
+
+/* =====================================================
+   BUTTON
+===================================================== */
+
+.next-button {
+
+    border: none;
+
+    background: none;
+
+    cursor: pointer;
+
+    color: var(--burgundy);
+
+    font-family:
+        "Amiri",
+        serif;
+
+    font-size: 17px;
+
+    display: inline-flex;
+
+    gap: 12px;
+
+    align-items: center;
+
+    transition:
+        transform .3s ease;
+}
+
+
+.next-button:hover {
+
+    transform:
+        translateY(-4px);
+}
+
+
+.next-button span {
+
+    color: var(--gold);
+
+    font-size: 20px;
+
+    animation:
+        arrowMove 1.5s ease-in-out infinite;
+}
+
+
+@keyframes arrowMove {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(5px);
+
+    }
+
+}
+
+
+/* =====================================================
+   MEANING PAGE
+===================================================== */
+
+.meaning {
+
+    background:
+        var(--cream);
+}
+
+
+/* =====================================================
+   HAIR ART
+===================================================== */
+
+.meaning-hair-art {
+
+    position: absolute;
+
+    width: 500px;
+
+    height: 650px;
+
+    left: 50%;
+
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    opacity: .20;
+
+    pointer-events: none;
+}
+
+
+.hair-svg {
+
+    width: 100%;
+
+    height: 100%;
+}
+
+
+.strand {
+
+    fill: none;
+
+    stroke:
+        var(--burgundy);
+
+    stroke-width: 1;
+
+    stroke-linecap: round;
+
+    stroke-dasharray: 1200;
+
+    stroke-dashoffset: 1200;
+
+    animation:
+        drawHair 4s ease forwards;
+}
+
+
+.strand-1 {
+    animation-delay: .2s;
+}
+
+.strand-2 {
+    animation-delay: .35s;
+}
+
+.strand-3 {
+    animation-delay: .5s;
+}
+
+.strand-4 {
+    animation-delay: .65s;
+}
+
+.strand-5 {
+    animation-delay: .8s;
+}
+
+
+@keyframes drawHair {
+
+    to {
+
+        stroke-dashoffset: 0;
+
+    }
+
+}
+
+
+/* =====================================================
+   MEANING CONTENT
+===================================================== */
+
+.meaning-content {
+
+    position: relative;
+
+    z-index: 10;
+
+    width: min(600px, 100%);
+
+    text-align: center;
+}
+
+
+.section-label {
+
+    color: var(--gold);
+
+    font-size: 13px;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 20px;
+}
+
+
+.meaning-name {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 18px;
+}
+
+
+.meaning-name h2 {
+
+    font-size: 62px;
+
+    font-weight: 400;
+
+    color: var(--burgundy);
+}
+
+
+.meaning-name-line {
+
+    width: 35px;
+
+    height: 1px;
+
+    background: var(--gold);
+
+    opacity: .7;
+}
+
+
+.meaning-line {
+
+    width: 50px;
+
+    height: 1px;
+
+    background: var(--gold);
+
+    margin:
+        15px auto 25px;
+}
+
+
+.meaning-text {
+
+    font-size: 21px;
+
+    line-height: 2;
+
+}
+
+
+.meaning-text strong {
+
+    color: var(--burgundy);
+
+}
+
+
+.meaning-note {
+
+    margin-top: 25px;
+
+    color: var(--gold);
+
+    font-size: 16px;
+}
+
+
+/* =====================================================
+   REVEAL WORDS
+===================================================== */
+
+.meaning-reveal {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 25px;
+
+    margin:
+        25px 0;
+
+}
+
+
+.meaning-reveal span {
+
+    color: var(--burgundy);
+
+    font-size: 17px;
+
+    opacity: 0;
+
+    transform:
+        translateY(12px);
+
+    animation:
+        wordReveal 1s ease forwards;
+}
+
+
+.meaning-reveal span:nth-child(1) {
+    animation-delay: 1.5s;
+}
+
+
+.meaning-reveal span:nth-child(2) {
+    animation-delay: 1.8s;
+}
+
+
+.meaning-reveal span:nth-child(3) {
+    animation-delay: 2.1s;
+}
+
+
+@keyframes wordReveal {
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+.meaning-final {
+
+    font-size: 18px;
+
+    line-height: 2;
+
+    color: var(--text);
+
+    opacity: .7;
+
+    margin-bottom: 25px;
+}
+
+
+/* =====================================================
+   INVITATION
+===================================================== */
+
+.invitation {
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--cream),
+            var(--soft-cream)
+        );
+}
+
+
+.invitation-content {
+
+    width:
+        min(650px, 100%);
+
+    text-align: center;
+
+    position: relative;
+
+    z-index: 10;
+}
+
+
+.invitation h2 {
+
+    font-size:
+        clamp(38px, 7vw, 58px);
+
+    font-weight: 400;
+
+    color: var(--burgundy);
+
+    margin-bottom: 15px;
+}
+
+
+.invitation-text {
+
+    font-size: 19px;
+
+    line-height: 2;
+
+    margin-bottom: 30px;
+}
+
+
+.invitation-text strong {
+
+    color: var(--burgundy);
+}
+
+
+/* =====================================================
+   EVENT
+===================================================== */
+
+.event-details {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 12px;
+
+    max-width: 550px;
+
+    margin: auto;
+}
+
+
+.event-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    text-align: right;
+
+    padding: 15px;
+
+    background:
+        rgba(255,255,255,.35);
+
+    border:
+        1px solid
+        rgba(184,148,88,.2);
+
+    transition:
+        transform .3s ease,
+        border .3s ease;
+}
+
+
+.event-item:hover {
+
+    transform:
+        translateY(-3px);
+
+    border-color:
+        rgba(184,148,88,.55);
+}
+
+
+.event-icon {
+
+    color: var(--gold);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 14px;
+}
+
+
+.event-item small {
+
+    color: var(--gold);
+
+    font-size: 12px;
+}
+
+
+.event-item p {
+
+    font-size: 16px;
+
+    margin-top: 3px;
+}
+
+
+/* =====================================================
+   CLOSING
+===================================================== */
+
+.closing {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    margin-top: 30px;
+}
+
+
+.gold-line {
+
+    width: 45px;
+
+    height: 1px;
+
+    background: var(--gold);
+
+    opacity: .6;
+}
+
+
+.closing p {
+
+    color: var(--burgundy);
+
+    font-size: 17px;
+}
+
+
+.restart-button {
+
+    margin-top: 20px;
+
+    border: none;
+
+    background: none;
+
+    color: var(--gold);
+
+    font-family:
+        "Amiri",
+        serif;
+
+    cursor: pointer;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+
+    .intro-content h1 {
+
+        font-size: 65px;
+
+    }
+
+
+    .baby-name {
+
+        font-size: 90px;
+
+    }
+
+
+    .name-wrapper {
+
+        gap: 8px;
+
+    }
+
+
+    .name-decoration {
+
+        width: 25px;
+
+    }
+
+
+    .subtitle {
+
+        font-size: 16px;
+
+        padding:
+            0 20px;
+
+    }
+
+
+    .meaning-hair-art {
+
+        width: 360px;
+
+        height: 600px;
+
+        opacity: .15;
+
+    }
+
+
+    .meaning-name h2 {
+
+        font-size: 50px;
+
+    }
+
+
+    .meaning-text {
+
+        font-size: 18px;
+
+        padding:
+            0 15px;
+
+    }
+
+
+    .meaning-final {
+
+        font-size: 16px;
+
+    }
+
+
+    .meaning-reveal {
+
+        gap: 15px;
+
+    }
+
+
+    .meaning-reveal span {
+
+        font-size: 15px;
+
+    }
+
+
+    .event-details {
+
+        grid-template-columns: 1fr;
+
+        max-width: 370px;
+
+    }
+
+
+    .invitation h2 {
+
+        font-size: 38px;
+
+    }
+
+
+    .invitation-text {
+
+        font-size: 17px;
+
+    }
+
+}
+
+
+@media (max-height: 700px) {
+
+
+    .baby-name {
+
+        font-size: 75px;
+
+    }
+
+
+    .date-card {
+
+        margin:
+            20px auto;
+
+        height: 105px;
+
+    }
+
+
+    .meaning-content {
+
+        transform:
+            scale(.9);
+
+    }
+
+
+    .invitation-content {
+
+        transform:
+            scale(.9);
+
+    }
+
+  }
